@@ -2,7 +2,7 @@ import Container from "./ui/Container";
 
 export default function Footer() {
   return (
-    <footer className="relative text-white pt-20 pb-10 overflow-hidden">
+    <footer className="relative text-white pt-10 pb-10 overflow-hidden">
 
       {/* Base background */}
       <div className="absolute inset-0 bg-black"></div>
@@ -57,12 +57,22 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#portfolio" className="hover:text-white transition">
-                  Our Work
+                  Portfolio
                 </a>
               </li>
               <li>
                 <a href="#contact" className="hover:text-white transition">
                   Contact
+                </a>
+              </li>
+              <li>
+                <a href="#about" className="hover:text-white transition">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#reviews" className="hover:text-white transition">
+                  Reviews
                 </a>
               </li>
             </ul>

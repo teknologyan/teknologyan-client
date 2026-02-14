@@ -68,7 +68,7 @@ export default function About() {
               </div>
 
               <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center">
-                <h3 className="text-2xl font-bold text-purple-400">10+</h3>
+                <h3 className="text-2xl font-bold text-purple-400">80+</h3>
                 <p className="text-gray-400 mt-2 text-sm">Projects Delivered</p>
               </div>
 
@@ -78,7 +78,7 @@ export default function About() {
               </div>
 
               <div className="p-6 rounded-2xl bg-white/5 border border-white/10 text-center">
-                <h3 className="text-2xl font-bold text-yellow-400">12h</h3>
+                <h3 className="text-2xl font-bold text-yellow-400">4h</h3>
                 <p className="text-gray-400 mt-2 text-sm">Response Time</p>
               </div>
 
