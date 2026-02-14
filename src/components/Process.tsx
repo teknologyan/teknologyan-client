@@ -28,7 +28,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="relative py-28 bg-[#020617] text-white">
+    <section className="relative min-h-screen flex items-center py-20 bg-[#020617] text-white">
       <Container>
 
         {/* Heading */}

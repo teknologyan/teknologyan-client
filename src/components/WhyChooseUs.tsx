@@ -30,7 +30,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-us" className="relative py-28 overflow-hidden text-white">
+    <section id="why-us" className="relative min-h-screen flex items-center py-20 overflow-hidden text-white">
 
       {/* Background */}
       <div className="absolute inset-0 bg-[#0b1120]" />

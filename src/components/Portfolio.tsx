@@ -23,7 +23,7 @@ const projects = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="relative py-28 text-white overflow-hidden">
+    <section id="portfolio" className="relative min-h-screen flex items-center py-20 text-white overflow-hidden">
 
   {/* Base background */}
   <div className="absolute inset-0 bg-black"></div>

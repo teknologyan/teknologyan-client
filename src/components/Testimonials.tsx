@@ -30,7 +30,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="relative py-28 bg-[#020617] text-white overflow-hidden">
+    <section className="relative min-h-screen flex items-center py-20 bg-[#020617] text-white overflow-hidden">
 
       {/* Background glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent"></div>

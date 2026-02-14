@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Button from "./ui/Button";
 
 const slides = [
   {
@@ -27,15 +26,20 @@ const slides = [
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const isVisibleRef = useRef(false);
 
+  // START SLIDER
   const startSlider = () => {
-    stopSlider(); // prevent duplicate intervals
+    if (intervalRef.current || !isVisibleRef.current) return;
+
     intervalRef.current = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 7000);
+    }, 5000);
   };
 
+  // STOP SLIDER
   const stopSlider = () => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -43,19 +47,37 @@ export default function Hero() {
     }
   };
 
-  // Start on mount
+  // HANDLE VISIBILITY OF HERO (IMPORTANT FIX)
   useEffect(() => {
-    startSlider();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
 
-    return () => stopSlider();
+        if (entry.isIntersecting) {
+          startSlider();
+        } else {
+          stopSlider();
+        }
+      },
+      { threshold: 0.6 } // 60% visible
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      stopSlider();
+    };
   }, []);
 
-  // Handle tab visibility (FIXED)
+  // HANDLE TAB SWITCH
   useEffect(() => {
     const handleVisibility = () => {
       if (document.hidden) {
         stopSlider();
-      } else {
+      } else if (isVisibleRef.current) {
         startSlider();
       }
     };
@@ -69,10 +91,9 @@ export default function Hero() {
 
   return (
     <section
+      ref={sectionRef}
       id="home"
-      className="relative h-screen flex items-center justify-center text-white overflow-hidden bg-black"
-      onMouseEnter={stopSlider}
-      onMouseLeave={startSlider}
+      className="relative min-h-screen flex items-center justify-center text-white overflow-hidden bg-black"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
@@ -102,13 +123,30 @@ export default function Hero() {
         </AnimatePresence>
 
         {/* Buttons */}
-        <div className="mt-10 flex justify-center gap-4">
-          <a href="#contact">
-            <Button>Get Free Consultation</Button>
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+
+          <a
+            href="#contact"
+            className="relative inline-flex items-center justify-center px-6 py-3 rounded-xl 
+            bg-gradient-to-r from-blue-600 to-purple-600 
+            text-white font-medium overflow-hidden
+            transition-all duration-300
+            hover:scale-105 hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
+          >
+            <span className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-100 transition"></span>
+            <span className="relative">Get Free Consultation</span>
           </a>
 
-          <a href="#why-us">
-            <Button variant="secondary"> Why Us?</Button>
+          <a
+            href="#why-us"
+            className="relative inline-flex items-center justify-center px-6 py-3 rounded-xl 
+            border border-white/10 text-gray-300 font-medium 
+            backdrop-blur-md
+            transition-all duration-300
+            hover:border-white/30 hover:text-white
+            hover:bg-white/5 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+          >
+            Why Us ?
           </a>
         </div>
 
@@ -117,10 +155,7 @@ export default function Hero() {
           {slides.map((_, i) => (
             <button
               key={i}
-              onClick={() => {
-                setIndex(i);
-                startSlider(); // restart timer on manual click
-              }}
+              onClick={() => setIndex(i)}
               className={`h-2 rounded-full transition-all ${
                 i === index ? "w-8 bg-blue-500" : "w-4 bg-gray-600"
               }`}

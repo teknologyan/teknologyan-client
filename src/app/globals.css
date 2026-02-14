@@ -84,3 +84,26 @@ button,
 .cursor-pointer {
   cursor: pointer;
 }
+@keyframes shine {
+  0% { transform: translateX(-100%) }
+  100% { transform: translateX(200%) }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-in-out;
+}
+/* SEO hidden content (accessible for search engines) */
+.seo-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+}

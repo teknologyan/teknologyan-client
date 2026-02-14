@@ -9,6 +9,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import TrustBar from "@/components/TrustBar";
 import CTA from "@/components/CTA";
+import About from "@/components/About";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <TrustBar />
+      <About />
       <Services />
       <WhyChooseUs />
       <Process />

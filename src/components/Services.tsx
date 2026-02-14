@@ -14,7 +14,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-28 overflow-hidden text-white bg-black">
+    <section id="services" className="relative min-h-screen flex items-center py-20 overflow-hidden text-white bg-black">
 
       <BackgroundNetwork />
 

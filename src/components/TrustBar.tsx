@@ -28,5 +28,6 @@ export default function TrustBar() {
 
       </div>
     </section>
+    
   );
 }

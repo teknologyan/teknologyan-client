@@ -1,7 +1,7 @@
 export default function sitemap() {
   return [
     {
-      url: "https://teknologyan.com",
+      url: "https://www.teknologyan.com",
       lastModified: new Date(),
     },
   ];
