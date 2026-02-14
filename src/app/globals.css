@@ -96,14 +96,3 @@ button,
 .animate-fadeIn {
   animation: fadeIn 0.8s ease-in-out;
 }
-/* SEO hidden content (accessible for search engines) */
-.seo-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  white-space: nowrap;
-  border: 0;
-}

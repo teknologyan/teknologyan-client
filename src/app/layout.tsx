@@ -6,17 +6,26 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Teknologyan - Web Development & Digital Solutions",
+  metadataBase: new URL("https://www.teknologyan.com"),
+
+  title: {
+    default: "Teknologyan - Web Development & Digital Solutions",
+    template: "%s | Teknologyan",
+  },
+
   description:
     "We provide affordable web development, web app and SEO services for startups and businesses in India, US, Canada and Europe. Build scalable digital products.",
+
   keywords: [
     "web development company",
     "website development company",
@@ -34,10 +43,13 @@ export const metadata: Metadata = {
     "web development Canada",
     "web development Europe",
   ],
+
   authors: [{ name: "Teknologyan" }],
+
   icons: {
     icon: "/favicon.ico",
   },
+
   openGraph: {
     title: "Teknologyan - Web Development & SEO Services",
     description:
@@ -45,6 +57,15 @@ export const metadata: Metadata = {
     url: "https://www.teknologyan.com",
     siteName: "Teknologyan",
     type: "website",
+  },
+
+  alternates: {
+    canonical: "https://www.teknologyan.com",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -73,7 +94,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Structured Data (SEO BOOST) */}
+        {/* Structured Data (Invisible SEO) */}
         <Script
           id="schema-org"
           type="application/ld+json"
@@ -89,26 +110,6 @@ export default function RootLayout({
             areaServed: ["US", "Canada", "Europe"],
           })}
         </Script>
-
-        {/* Hidden SEO Content */}
-        <div className="seo-hidden">
-          <h1>Affordable Web Development Services for US, Canada and Europe</h1>
-
-          <p>
-            Teknologyan provides web development, web application development
-            and SEO services for startups and businesses.
-          </p>
-
-          <p>
-            We build modern websites, scalable web apps and provide SEO services
-            to improve Google ranking and generate leads.
-          </p>
-
-          <p>
-            Our services are available for clients in the US, Canada and Europe
-            with affordable pricing and high-quality solutions.
-          </p>
-        </div>
 
         {children}
 
